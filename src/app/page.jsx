@@ -17,7 +17,7 @@ import { getArtists, getEvents, getPlans } from '@/core/utils/helper';
 export default async function Home() {
   const artistList = getArtists();
   const eventList = getEvents();
-  const planList = getPlans();
+  const planList = []; //getPlans();
 
   const [artists, events, plans] = await Promise.all([
     artistList,
