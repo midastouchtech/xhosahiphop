@@ -22,42 +22,76 @@ import Settings from '@/core/components/settings';
 import { ENABLE_SETTINGS } from '@/core/constants/constant';
 // Template metadata
 export var metadata = {
-    title: 'Listen App - Online Music Streaming App',
-    description: 'Listen App - Online Music Streaming App Template',
-    keywords: 'music template, music app, music web app, responsive music app, music, themeforest, nextjs music app template, react music app template, css3, react, nextjs'
+  title: 'XhosaHipHop - Online Music Streaming App',
+  description: 'XhosaHipHop - Online Music Streaming App Template',
+  keywords:
+    'music template, music app, music web app, responsive music app, music, themeforest, nextjs music app template, react music app template, css3, react, nextjs',
 };
 export default function RootLayout(_a) {
-    var children = _a.children;
-    return (<html lang="en">
-			<head>
-				{/* Favicon */}
-				<link rel="icon" sizes='32x32' href="/images/logos/favicon.ico" type="image/x-icon"/>
-				
-				{/* IOS Touch Icons */}
-				<link rel="apple-touch-icon" sizes="72x72" href="/images/logos/apple-icon/touch-icon-iphone.png" type="image/png"/>
-				<link rel="apple-touch-icon" sizes="152x152" href="/images/logos/apple-icon/touch-icon-ipad.png" type="image/png"/>
-				<link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-icon/touch-icon-iphone-retina.png" type="image/png"/>
-				<link rel="apple-touch-icon" sizes="167x167" href="/images/logos/apple-icon/touch-icon-ipad-retina.png" type="image/png"/>
+  var children = _a.children;
+  return (
+    <html lang='en'>
+      <head>
+        {/* Favicon */}
+        <link
+          rel='icon'
+          sizes='32x32'
+          href='/images/logos/favicon.ico'
+          type='image/x-icon'
+        />
 
-				{/* Google fonts */}
-				<link rel="preconnect" href="https://fonts.googleapis.com"/>
-				<link rel="preconnect" href="https://fonts.gstatic.com"/>
-				<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-				<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-			</head>
-		
-			<body>
-				<Authentication>
-					<Theme>
-						<Bootstrap />
+        {/* IOS Touch Icons */}
+        <link
+          rel='apple-touch-icon'
+          sizes='72x72'
+          href='/images/logos/apple-icon/touch-icon-iphone.png'
+          type='image/png'
+        />
+        <link
+          rel='apple-touch-icon'
+          sizes='152x152'
+          href='/images/logos/apple-icon/touch-icon-ipad.png'
+          type='image/png'
+        />
+        <link
+          rel='apple-touch-icon'
+          sizes='180x180'
+          href='/images/logos/apple-icon/touch-icon-iphone-retina.png'
+          type='image/png'
+        />
+        <link
+          rel='apple-touch-icon'
+          sizes='167x167'
+          href='/images/logos/apple-icon/touch-icon-ipad-retina.png'
+          type='image/png'
+        />
 
-						{/* Layout */}
-						<Snackbar>
-							<Player>{children}</Player>
-						</Snackbar>
-						{ENABLE_SETTINGS && (<Settings />)}
-					</Theme>
-				</Authentication>
-			</body>
-		</html>);
+        {/* Google fonts */}
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap'
+          rel='stylesheet'
+        />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap'
+          rel='stylesheet'
+        />
+      </head>
+
+      <body>
+        <Authentication>
+          <Theme>
+            <Bootstrap />
+
+            {/* Layout */}
+            <Snackbar>
+              <Player>{children}</Player>
+            </Snackbar>
+            {ENABLE_SETTINGS && <Settings />}
+          </Theme>
+        </Authentication>
+      </body>
+    </html>
+  );
 }

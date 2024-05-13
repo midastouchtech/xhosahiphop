@@ -1,5 +1,5 @@
 /**
- * @name SongCard
+ * @name EventCard
  * @file card.tsx
  * @description add song card component
  */
@@ -16,20 +16,29 @@ import { useTheme } from '@/core/contexts/theme';
 
 // Components
 import Tab from '@/core/components/tab';
-import SongForm from './form';
-import AlbumForm from './album-form';
-import Dropzone from '@/core/components/dropzone';
-import Input from '@/core/components/input';
-import ErrorHandler from '@/core/components/error';
+import EventForm from './form';
+import VenueForm from './venue-form';
 import { assoc, isEmpty, set } from 'ramda';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-const SongCard = () => {
+const EventCard = () => {
   const { currentUser } = useAuthentication();
   const { replaceClassName } = useTheme();
   const router = useRouter();
   const [formData, setFormData] = useState({});
+  const [venueFormData, setVenueFormData] = useState({
+    contactNumber: '',
+    additionalContactNumber: '',
+    contactNumber2: '',
+    allowsGoodsSale: false,
+    allowsAlchoholSale: false,
+    allowsAlchoholConsumption: false,
+    hasToilets: false,
+    hasWifi: false,
+    isIndoors: false,
+    isOutdoors: false,
+  });
   const { register, handleSubmit, setValue, control, watch, formState } =
     useForm({});
 
@@ -38,11 +47,11 @@ const SongCard = () => {
   const tabs = [
     {
       id: 'music',
-      name: 'Add Music',
+      name: 'Create Event',
     },
     {
       id: 'album',
-      name: 'Add Album',
+      name: 'Create Venue',
     },
   ];
 
@@ -65,21 +74,38 @@ const SongCard = () => {
    * Handle dropzone `onDrop` event
    */
 
-  const handleFormChange = (e) => {
-    if (!isEmpty(e.target.name)) {
-      setFormData((prev) => ({
-        ...prev,
-        [e.target.name]:
-          e.target.type === 'checkbox' ? e.target.checked : e.target.value,
-      }));
+  const handleFormChange = (type) => (e) => {
+    console.log(
+      'handling form change for type',
+      type,
+      e.target.name,
+      e.target.value
+    );
+    if (type === 'venues') {
+      if (!isEmpty(e.target.name)) {
+        setVenueFormData((prev) => ({
+          ...prev,
+          [e.target.name]:
+            e.target.type === 'checkbox' ? e.target.checked : e.target.value,
+        }));
+      }
+    } else {
+      if (!isEmpty(e.target.name)) {
+        setFormData((prev) => ({
+          ...prev,
+          [e.target.name]:
+            e.target.type === 'checkbox' ? e.target.checked : e.target.value,
+        }));
+      }
     }
   };
 
   const handleFormSubmit = (type) => () => {
     console.log('formData', formData);
+    const data = type === 'venues' ? venueFormData : formData;
 
     axios
-      .post(`/api/${type}/add`, assoc('userId', currentUser._id, formData))
+      .post(`/api/${type}/add`, assoc('userId', currentUser._id, data))
       .then((response) => {
         console.log('response', response);
         router.push('/music');
@@ -91,6 +117,7 @@ const SongCard = () => {
   };
 
   console.log('formData', formData);
+  console.log('venueFormData', venueFormData);
 
   return (
     <div className='card'>
@@ -124,10 +151,10 @@ const SongCard = () => {
             aria-labelledby='music'
             tabIndex={0}
           >
-            <SongForm
+            <EventForm
               attachmentId='song_file_1'
-              onChange={handleFormChange}
-              onFormSubmit={handleFormSubmit('songs')}
+              onChange={handleFormChange('events')}
+              onFormSubmit={handleFormSubmit('events')}
               data={formData}
             />
           </div>
@@ -138,11 +165,11 @@ const SongCard = () => {
             aria-labelledby='album'
             tabIndex={0}
           >
-            <AlbumForm
+            <VenueForm
               attachmentId='song_file_2'
-              onChange={handleFormChange}
-              data={formData}
-              onFormSubmit={handleFormSubmit('albums')}
+              onChange={handleFormChange('venues')}
+              data={venueFormData}
+              onFormSubmit={handleFormSubmit('venues')}
             />
           </div>
         </div>
@@ -151,5 +178,5 @@ const SongCard = () => {
   );
 };
 
-SongCard.displayName = 'SongCard';
-export default SongCard;
+EventCard.displayName = 'EventCard';
+export default EventCard;

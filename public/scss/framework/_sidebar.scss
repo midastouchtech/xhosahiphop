@@ -113,6 +113,17 @@
       );
     }
   }
+  #sidebar[data-sidebar='#{$name}'] {
+    .btn-primary {
+      background-color: $value;
+      border-color: $value;
+      @if $value == $orange {
+        color: $gray-100;
+      } @else {
+        color: color-contrast($value);
+      }
+    }
+  }
 }
 
 // Desktop & Tablet

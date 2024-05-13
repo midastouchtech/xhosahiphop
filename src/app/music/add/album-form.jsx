@@ -1,5 +1,5 @@
 /**
- * @name SongForm
+ * @name AlbumForm
  * @file form.tsx
  * @description song form component
  */
@@ -20,6 +20,7 @@ import Dropzone from '@/core/components/dropzone';
 import Input from '@/core/components/input';
 import ErrorHandler from '@/core/components/error';
 import FindSelect from '@/core/components/find-select';
+import Form from 'react-bootstrap/Form';
 
 // Utilities
 import { SongTypes } from '@/core/types';
@@ -31,7 +32,7 @@ const propTypes = {
   attachmentId: PropTypes.string.isRequired,
 };
 
-const SongForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
+const AlbumForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
   const { replaceClassName } = useTheme();
   const {
     register,
@@ -88,16 +89,17 @@ const SongForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
         {<ErrorHandler root={errors?.cover} />}
       </div>
       <div className='col-12'>
+        <label className='fw-bold mb-2'>Name</label>
         <Input
-          id='title'
-          placeholder='Song name'
-          className={classNames('form-control', errors?.title && 'is-invalid')}
-          {...register('title', {
+          id='name'
+          placeholder='Album name'
+          className={classNames('form-control', errors?.name && 'is-invalid')}
+          {...register('name', {
             required: true,
             minLength: { value: 5, message: '5' },
           })}
         />
-        {<ErrorHandler root={errors?.title} />}
+        {<ErrorHandler root={errors?.name} />}
       </div>
       <div className='col-12'>
         <label className='fw-bold mb-2'>Release Date</label>
@@ -113,36 +115,6 @@ const SongForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
           })}
         />
         {<ErrorHandler root={errors?.release} />}
-      </div>
-      <div className='col-12'>
-        <FindSelect
-          name='album'
-          type='albums'
-          onChange={onChange}
-          labelKey='name'
-          value={data['album']}
-          isSingleSelect
-          disableCreate
-        />
-        {<ErrorHandler root={errors?.title} />}
-      </div>
-      <div className='col-12'>
-        <label className='fw-bold mb-2'>Audio File</label>
-        <Controller
-          name='src'
-          control={control}
-          render={() => (
-            <Dropzone
-              noClick
-              title='Drag & Drop or click to Song Upload'
-              infoText='(Max: 10mb)'
-              onDrop={handleSongFileDrop}
-              type='video'
-              label='Upload audio file'
-            />
-          )}
-        />
-        {<ErrorHandler root={errors?.src} />}
       </div>
       <div className='col-sm-12'>
         <FindSelect
@@ -205,16 +177,6 @@ const SongForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
         {<ErrorHandler root={errors?.categories} />}
       </div>
       <div className='col-12'>
-        <Input
-          as='textarea'
-          id='lyrics'
-          placeholder='Lyrics'
-          className={classNames('form-control', errors?.lyrics && 'is-invalid')}
-          style={{ minHeight: 80 }}
-          {...register('lyrics')}
-        />
-      </div>
-      <div className='col-12'>
         <div className='d-flex align-items-center mb-2'>
           <div className={replaceClassName('form-check me-4')}>
             <input
@@ -253,14 +215,14 @@ const SongForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
           />
         </div>
         <div className='form-text mb-4 mt-4'>
-          Please add song price if Song is paid
+          Please add album price if album is paid
         </div>
         <div className='card-footer text-center'>
           <input
             className='btn btn-primary text-white'
             style={{ minWidth: 120 }}
             type='submit'
-            value={'Save Song'}
+            value={'Save Album'}
           />
           <button
             className={replaceClassName('btn btn-outline-secondary ms-2')}
@@ -273,7 +235,7 @@ const SongForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
   );
 };
 
-SongForm.propTypes = propTypes;
-SongForm.displayName = 'SongForm';
+AlbumForm.propTypes = propTypes;
+AlbumForm.displayName = 'SongForm';
 
-export default SongForm;
+export default AlbumForm;

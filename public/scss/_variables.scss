@@ -109,6 +109,7 @@ $component-color-options: (
   'pink': $pink,
   'violet': $violet,
   'magenta': $magenta,
+  'black': $black,
 );
 // scss-docs-end component-color-options
 
@@ -241,6 +242,7 @@ $btn-link-border-height: 0.125rem; // 4px
 $btn-link-padding-bottom: $btn-link-border-height;
 
 $btn-default-bg: $white;
+$btn-primary-bg: $primary;
 $btn-default-box-shadow: 0 0.125rem 0.25rem rgba($black, 0.1);
 $btn-default-hover-box-shadow: 0 0.125rem 0.25rem rgba($black, 0.2);
 
