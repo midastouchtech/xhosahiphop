@@ -18,18 +18,15 @@ var Brand = function () {
     document.body.removeAttribute(SIDEBAR_TOGGLE);
   };
   return (
-    <>
-      <Link className='brand' href={BRAND.href} onClick={handleClick}>
-        <Image
-          src={BRAND.logo}
-          width={50}
-          height={50}
-          alt={BRAND.name}
-          priority
-        />
-      </Link>
-      <span className='brand brand__name'>{BRAND.name}</span>
-    </>
+    <Link className='brand' href={BRAND.href} onClick={handleClick}>
+      <Image
+        src={BRAND.logo}
+        width={50}
+        height={50}
+        alt={BRAND.name}
+        priority
+      />
+    </Link>
   );
 };
 Brand.displayName = 'Brand';
