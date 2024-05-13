@@ -157,7 +157,6 @@ export async function getPlaylist() {
  * @returns
  */
 export async function getRadio() {
-  console;
   const response = await base(RADIO);
   const data = response.map((item) => {
     return radioToLocal(item);
