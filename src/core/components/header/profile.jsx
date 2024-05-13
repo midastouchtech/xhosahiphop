@@ -57,7 +57,7 @@ var Profile = function () {
                 />
               </div>
               <div className='avatar__content'>
-                <span className='avatar__title'>{currentUser.name}</span>
+                <span className='avatar__title'>{currentUser.stageName}</span>
                 <span className='avatar__subtitle'>{currentUser.role}</span>
               </div>
             </div>
