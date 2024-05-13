@@ -51,14 +51,15 @@ import axios from 'axios';
  */
 async function base(url, data) {
   //console.log('apiUrl =>', `${process.env.NEXT_PUBLIC_SITE_URL}${url}`);
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_SITE_URL}${url}`,
-    {
-      params: data,
-    }
-  );
-  const res = await response.data;
-  return res.data;
+  // const response = await axios.get(
+  //   `${process.env.NEXT_PUBLIC_SITE_URL}${url}`,
+  //   {
+  //     params: data,
+  //   }
+  // );
+  // const res = await response.data;
+  // return res.data;
+  return [];
 }
 
 /**
