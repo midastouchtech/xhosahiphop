@@ -61,11 +61,7 @@ const Dropzone = ({
       formData.append('upload_preset', 'objss5xh'); // Replace with your Cloudinary upload preset
       formData.append('asset_folder', `xhosahiphop/${type}/songs`); // Optional (folder name in Cloudinary)
       formData.append('public_id', `${uniqueId}`); // Optional (file name in Cloudinary)
-      console.log(
-        'uploading to type',
-        type,
-        `https://api.cloudinary.com/v1_1/namoota/${type}/upload`
-      );
+
       const response = await axios.post(
         `https://api.cloudinary.com/v1_1/namoota/${type}/upload`,
         formData,
@@ -77,12 +73,12 @@ const Dropzone = ({
             const percentCompleted = Math.round(
               (progressEvent.loaded * 100) / progressEvent.total
             );
-            console.log('percentCompleted', percentCompleted);
+            //console.log('percentCompleted', percentCompleted);
             setProgress(percentCompleted);
           },
         }
       );
-      console.log('response', response.data);
+      //console.log('response', response.data);
       const {
         secure_url: fileUrl,
         duration,

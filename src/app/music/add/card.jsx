@@ -52,12 +52,12 @@ const SongCard = () => {
    * @param data
    */
   const submitForm = (data) => {
-    console.log('data', data);
-    console.log('formData', formData);
+    //console.log('data', data);
+    //console.log('formData', formData);
   };
 
   const logErrors = (errors) => {
-    console.log(errors);
+    //console.log(errors);
   };
 
   /**
@@ -76,21 +76,21 @@ const SongCard = () => {
   };
 
   const handleFormSubmit = (type) => () => {
-    console.log('formData', formData);
+    //console.log('formData', formData);
 
     axios
       .post(`/api/${type}/add`, assoc('userId', currentUser._id, formData))
       .then((response) => {
-        console.log('response', response);
+        //console.log('response', response);
         router.push('/music');
       })
       .catch((error) => {
-        console.log('error', error);
+        //console.log('error', error);
         alert('Error adding music, please fill in all fields');
       });
   };
 
-  console.log('formData', formData);
+  //console.log('formData', formData);
 
   return (
     <div className='card'>

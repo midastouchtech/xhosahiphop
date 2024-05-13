@@ -6,12 +6,12 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req, res) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query);
+    //console.log('req.method', req.method, 'req.query', req.query);
     const client = await clientPromise;
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('users');
     let data = await req.json();
-    console.log('data', data);
+    //console.log('data', data);
     const user = await collection.findOne({
       username: data.username,
     });
@@ -22,7 +22,7 @@ export async function POST(req, res) {
       );
     }
     const passwordsMatch = await bcrypt.compare(data.password, user.hash);
-    console.log('passwordsMatch', passwordsMatch);
+    //console.log('passwordsMatch', passwordsMatch);
     if (!passwordsMatch) {
       return NextResponse.json(
         { message: 'Incorrect password or username' },
@@ -38,7 +38,7 @@ export async function POST(req, res) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return NextResponse.json(
       {
         message: 'Something went wrong',

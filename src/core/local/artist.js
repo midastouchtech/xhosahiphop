@@ -31,6 +31,6 @@ export default function artistToLocal(data) {
   if (data.ratings) {
     artist.rating = getFloat(data.ratings);
   }
-  console.log(artist);
+  //console.log(artist);
   return artist;
 }

@@ -35,7 +35,7 @@ const getPersonInfo = async (data) => {
     }
     return [];
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return [];
   }
 };
@@ -66,13 +66,13 @@ const toKebabCase = (str) => {
 
 export async function POST(req) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query);
+    //console.log('req.method', req.method, 'req.query', req.query);
     const client = await clientPromise;
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('users');
 
     const data = await req.json();
-    console.log('inserting data', data);
+    //console.log('inserting data', data);
 
     const artistEntity = {
       username: toKebabCase(data.stageName),
@@ -86,7 +86,7 @@ export async function POST(req) {
     };
 
     const result = await collection.insertOne(artistEntity);
-    console.log(
+    //console.log(
       `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
     );
 
@@ -98,7 +98,7 @@ export async function POST(req) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return new Response({
       message: 'Something went wrong',
       error: e,

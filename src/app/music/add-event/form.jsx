@@ -34,7 +34,7 @@ var EventForm = function ({ onChange, data, onFormSubmit }) {
    * @param data
    */
   var submitForm = function (data) {
-    console.log('submitting form', data);
+    //console.log('submitting form', data);
     onFormSubmit();
   };
   /**
@@ -42,7 +42,7 @@ var EventForm = function ({ onChange, data, onFormSubmit }) {
    * Handle dropzone `onDrop` event
    */
   var handleDrop = useCallback(function (url) {
-    console.log('url', url);
+    //console.log('url', url);
     onChange({
       target: {
         name: 'image',
@@ -52,7 +52,7 @@ var EventForm = function ({ onChange, data, onFormSubmit }) {
   }, []);
 
   const handleTimeChange = (time) => {
-    console.log(time); // <- prints "3600" if "01:00" is picked
+    //console.log(time); // <- prints "3600" if "01:00" is picked
     this.setState({ time });
   };
 

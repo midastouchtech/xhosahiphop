@@ -50,7 +50,7 @@ import axios from 'axios';
  * @returns
  */
 async function base(url, data) {
-  console.log('apiUrl =>', `${process.env.NEXT_PUBLIC_SITE_URL}${url}`);
+  //console.log('apiUrl =>', `${process.env.NEXT_PUBLIC_SITE_URL}${url}`);
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_SITE_URL}${url}`,
     {
@@ -66,9 +66,9 @@ async function base(url, data) {
  * @returns
  */
 export async function getAlbums() {
-  console.log('getAlbums =>', ALBUMS);
+  //console.log('getAlbums =>', ALBUMS);
   const response = await base(ALBUMS);
-  console.log('getAlbums response =>', response);
+  //console.log('getAlbums response =>', response);
   const data = response.map((item) => {
     return albumToLocal(item);
   });
@@ -80,7 +80,7 @@ export async function getAlbums() {
  * @returns
  */
 export async function getArtists() {
-  console.log('getArtists =>', ARTISTS);
+  //console.log('getArtists =>', ARTISTS);
   const response = await base(ARTISTS);
   const data = response.map((item) => {
     return artistToLocal(item);
@@ -107,7 +107,7 @@ export async function getArtistAlbums(username) {
  * @returns
  */
 export async function getEvents() {
-  console.log;
+  //console.log;
   const response = await base(EVENTS);
   const data = response.map((item) => {
     return eventToLocal(item);

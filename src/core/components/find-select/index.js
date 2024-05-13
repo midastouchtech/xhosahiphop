@@ -24,7 +24,7 @@ const FindSelect = ({
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    console.log('finding', type, searchString);
+    //console.log('finding', type, searchString);
     fetch(`/api/${type}/find`, {
       method: 'POST',
       headers: {
@@ -62,7 +62,7 @@ const FindSelect = ({
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
         const newOption = {
           value: res.data.insertedId,
           label: `${res.data[labelKey]}`,
@@ -88,7 +88,7 @@ const FindSelect = ({
           value={value}
           placeholder={`Search for ${name}`}
           onInputChange={(inputValue) => {
-            console.log('inputValue', inputValue);
+            //console.log('inputValue', inputValue);
             setSearchString(inputValue);
           }}
           filterOption={(option, rawInput) => {
@@ -106,7 +106,7 @@ const FindSelect = ({
           value={value}
           placeholder={`Search for ${name}`}
           onInputChange={(inputValue) => {
-            console.log('inputValue', inputValue);
+            //console.log('inputValue', inputValue);
             setSearchString(inputValue);
           }}
           filterOption={(option, rawInput) => {

@@ -1,11 +1,11 @@
 const updateAlbumArtists = async (db, albumId, artists) => {
   const collection = db.collection('albums');
-  console.log('albumId', albumId, 'artists', artists);
+  //console.log('albumId', albumId, 'artists', artists);
   const result = await collection.updateOne(
     { id: albumId },
     { $addToSet: { artists: { $each: artists } } }
   );
-  console.log(
+  //console.log(
     `${result.modifiedCount} document(s) was/were updated with the _id: ${albumId}`
   );
 };
@@ -16,7 +16,7 @@ const updateAlbumComposers = async (db, albumId, composers) => {
     { id: albumId },
     { $addToSet: { composers: { $each: composers } } }
   );
-  console.log(
+  //console.log(
     `${result.modifiedCount} document(s) was/were updated with the _id: ${albumId}`
   );
 };
@@ -27,7 +27,7 @@ const updateAlbumLyricists = async (db, albumId, lyricists) => {
     { id: albumId },
     { $addToSet: { lyricists: { $each: lyricists } } }
   );
-  console.log(
+  //console.log(
     `${result.modifiedCount} document(s) was/were updated with the _id: ${albumId}`
   );
 };
@@ -38,7 +38,7 @@ const updateAlbumDirectors = async (db, albumId, directors) => {
     { id: albumId },
     { $addToSet: { directors: { $each: directors } } }
   );
-  console.log(
+  //console.log(
     `${result.modifiedCount} document(s) was/were updated with the _id: ${albumId}`
   );
 };
@@ -49,7 +49,7 @@ const updateAlbumCategories = async (db, albumId, categories) => {
     { id: albumId },
     { $addToSet: { categories: { $each: categories } } }
   );
-  console.log(
+  //console.log(
     `${result.modifiedCount} document(s) was/were updated with the _id: ${albumId}`
   );
 };

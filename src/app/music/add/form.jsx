@@ -46,22 +46,22 @@ const SongForm = ({ attachmentId, onChange, onFormSubmit, data }) => {
    * Handle dropzone `onDrop` event
    */
   const handleDrop = useCallback((url) => {
-    console.log('url', url);
+    //console.log('url', url);
     onChange({ target: { name: 'cover', value: url } });
   }, []);
 
   const handleSongFileDrop = useCallback((url) => {
-    console.log('song url', url);
+    //console.log('song url', url);
     onChange({ target: { name: 'src', value: url } });
   }, []);
 
   const onSubmit = (data) => {
-    console.log('data', data);
+    //console.log('data', data);
     onFormSubmit(data);
   };
 
   const handleErrors = (errors) => {
-    console.log(errors);
+    //console.log(errors);
   };
 
   return (

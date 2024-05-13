@@ -45,10 +45,10 @@ const RegisterForm = () => {
    */
   const submitForm = async (data) => {
     await postData('/api/register', data).then((result) => {
-      console.log('results are', result);
+      //console.log('results are', result);
       if (result.status === SUCCESSFUL) {
-        saveUser(data);
-        router.push('/music');
+        //saveUser(data);
+        router.push('/auth/login');
       }
     });
   };
@@ -82,6 +82,63 @@ const RegisterForm = () => {
       </div>
       <div className='mb-3'>
         <Input
+          label='First name'
+          id='firstName'
+          className={classNames(
+            'form-control',
+            errors?.firstName && 'is-invalid'
+          )}
+          {...register('firstName', {
+            required: true,
+            minLength: { value: 2, message: '5' },
+          })}
+        />
+        {<ErrorHandler root={errors?.firstName} />}
+      </div>
+      <div className='mb-3'>
+        <Input
+          label='Email'
+          id='email'
+          className={classNames('form-control', errors?.email && 'is-invalid')}
+          {...register('email', {
+            required: true,
+            minLength: { value: 2, message: '5' },
+          })}
+        />
+        {<ErrorHandler root={errors?.email} />}
+      </div>
+      <div className='mb-3'>
+        <Input
+          label='Last name'
+          id='lastName'
+          className={classNames(
+            'form-control',
+            errors?.lastName && 'is-invalid'
+          )}
+          {...register('lastName', {
+            required: true,
+            minLength: { value: 2, message: '5' },
+          })}
+        />
+        {<ErrorHandler root={errors?.lastName} />}
+      </div>
+      <div className='mb-3'>
+        <Input
+          label='Stage Name'
+          id='stageName'
+          className={classNames(
+            'form-control',
+            errors?.stageName && 'is-invalid'
+          )}
+          {...register('stageName', {
+            required: true,
+            minLength: { value: 5, message: '5' },
+          })}
+        />
+        {<ErrorHandler root={errors?.stageName} />}
+      </div>
+      <div className='mb-3'>
+        <Input
           label='Username'
           id='username'
           className={classNames(
@@ -90,7 +147,7 @@ const RegisterForm = () => {
           )}
           {...register('username', {
             required: true,
-            minLength: { value: 5, message: '5' },
+            minLength: { value: 2, message: '5' },
           })}
         />
         {<ErrorHandler root={errors?.username} />}

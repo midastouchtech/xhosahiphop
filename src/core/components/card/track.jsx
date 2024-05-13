@@ -40,7 +40,7 @@ var TrackCard = function (_a) {
   var replaceClassName = useTheme().replaceClassName;
   var Component = link ? Link : 'div';
   var attr = link ? { href: data.href } : {};
-  console.log('data', data);
+  //console.log('data', data);
   return (
     // Cover [[ Find at scss/components/cover.scss ]]
     <div className='cover cover--round scale-animation'>

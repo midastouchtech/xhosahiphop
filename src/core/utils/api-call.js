@@ -3,6 +3,9 @@
  * @file api-call.ts
  * @description using for api call
  */
+
+import axios from 'axios';
+
 /**
  *
  * API call to POST data
@@ -11,9 +14,5 @@
  * @returns
  */
 export async function postData(url, data) {
-  return await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: data,
-  });
+  return await axios.post(url, data);
 }

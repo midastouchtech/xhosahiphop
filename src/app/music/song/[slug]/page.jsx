@@ -9,9 +9,9 @@ import { ParamsTypes, SongTypes } from '@/core/types';
 
 export default async function SongDetailsPage({ params }) {
   const songs = await getSongs();
-  console.log('slug', params.slug);
+  //console.log('slug', params.slug);
   const song = songs.find((item) => item.id === params.slug);
-  console.log('song', song);
+  //console.log('song', song);
 
   return (
     <>

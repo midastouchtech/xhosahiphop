@@ -48,14 +48,14 @@ const LoginForm = () => {
       if (response.status === SUCCESSFUL) {
         setFormError('');
         // Change {DEFAULT_USER} with your data.
-        const result = await response.json();
-        console.log('results are', result);
+        const result = response.data;
+        //console.log('results are', result);
         const user = result.data;
-        console.log('user', user);
+        //console.log('user', user);
         saveUser(user);
         router.push('/music');
       } else {
-        console.log('error', error);
+        //console.log('error', error);
         setFormError('Incorrect password or username');
       }
     });

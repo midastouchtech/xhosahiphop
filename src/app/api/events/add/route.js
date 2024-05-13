@@ -41,36 +41,36 @@ const getPersonInfo = async (data, collectionName) => {
     const collection = db.collection(collectionName);
     const entityName = collectionName === 'users' ? 'artist' : 'event-types';
     if (data) {
-      console.log(
+      //console.log(
         'looking for ids in data',
         data.map((i) => i.value)
       );
       const persons = await collection
         .find({ _id: { $in: data.map((i) => new ObjectId(i.value)) } })
         .toArray();
-      console.log('persons', persons);
+      //console.log('persons', persons);
       return persons.map((p) => getCleanEntity(p, entityName));
     }
     return [];
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return [];
   }
 };
 
 const getVenueInfo = async (data) => {
   try {
-    console.log('venue data', data);
+    //console.log('venue data', data);
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('venues');
     if (data) {
       const venue = await collection.findOne({ _id: new ObjectId(data.value) });
-      console.log('venue', venue);
+      //console.log('venue', venue);
       return getCleanEntity(venue, 'venue');
     }
     return {};
   } catch (e) {
-    console.log(e);
+    //console.log(e);
   }
 };
 
@@ -88,7 +88,7 @@ const getCompanyInfo = async (data) => {
     }
     return [];
   } catch (e) {
-    console.log(e);
+    //console.log(e);
   }
 };
 
@@ -99,12 +99,12 @@ const createeventId = (name) => {
 
 export async function POST(req) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query);
+    //console.log('req.method', req.method, 'req.query', req.query);
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('events');
     const fileCollection = db.collection('files');
     const data = await req.json();
-    console.log('inserting event data', data);
+    //console.log('inserting event data', data);
     const eventId = createeventId(data.title || data.name);
     const eventEntity = {
       id: eventId,
@@ -159,10 +159,10 @@ export async function POST(req) {
       ...data.cover,
     };
 
-    console.log(eventEntity);
+    //console.log(eventEntity);
 
     const result = await collection.insertOne(eventEntity);
-    console.log(
+    //console.log(
       `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
     );
 
@@ -177,7 +177,7 @@ export async function POST(req) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return new Response({
       message: 'Something went wrong',
       error: e,

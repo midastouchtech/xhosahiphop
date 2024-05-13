@@ -8,7 +8,7 @@ import { NextResponse } from 'next/server';
  */
 export async function GET(req, { params }) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query, params);
+    //console.log('req.method', req.method, 'req.query', req.query, params);
 
     const client = await clientPromise;
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
@@ -16,7 +16,7 @@ export async function GET(req, { params }) {
 
     // get slug from request
     const { slug } = params;
-    console.log('slug', slug);
+    //console.log('slug', slug);
     // search for any artist that has the the username as slug and find all albums in albums table where the artists username matches an artist in the artists, lyricists, compoers or directors list of the album
     // for each album found, find all songs in the songs collection where the song.album.id matches the album.id
     const result = await collection
@@ -74,7 +74,7 @@ export async function GET(req, { params }) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return new Response({
       message: 'Something went wrong',
       error: e,

@@ -13,7 +13,7 @@ export default async function ArtistDetailsPage({ params }) {
   const albums = await getArtistAlbums(params.slug);
   const artist = await getArtistByUsername(params.slug);
   const updateArtist = assoc('totalAlbums', albums.length, artist);
-  console.log('updateArtist', updateArtist);
+  //console.log('updateArtist', updateArtist);
   return (
     <>
       {/* Hero [[ Find at scss/framework/hero.scss ]] */}

@@ -10,8 +10,9 @@ import Link from 'next/link';
 // Contexts
 import { useTheme } from '@/core/contexts/theme';
 var Hero = function () {
-    var replaceClassName = useTheme().replaceClassName;
-    return (<section className='container-fluid px-xl-4'>
+  var replaceClassName = useTheme().replaceClassName;
+  return (
+    <section className='container-fluid px-xl-4'>
       {/* Main hero [[ Find at scss/framework/hero.scss ]] */}
       <div className='main-hero mx-auto'>
         <div className='container'>
@@ -25,10 +26,16 @@ var Hero = function () {
                 starts here.
               </p>
               <div className='d-flex gap-2'>
-                <Link className='btn btn-lg btn-white flex-sm-grow-0 flex-grow-1' href='/soon'>
+                <Link
+                  className='btn btn-lg btn-white flex-sm-grow-0 flex-grow-1'
+                  href='/auth/register'
+                >
                   Try it free
                 </Link>
-                <Link className='btn btn-lg btn-outline-light flex-sm-grow-0 flex-grow-1' href='/soon'>
+                <Link
+                  className='btn btn-lg btn-outline-light flex-sm-grow-0 flex-grow-1'
+                  href='/auth/register'
+                >
                   Discover
                 </Link>
               </div>
@@ -36,7 +43,8 @@ var Hero = function () {
           </div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 };
 Hero.displayName = 'Hero';
 export default Hero;

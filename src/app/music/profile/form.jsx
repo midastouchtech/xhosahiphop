@@ -50,28 +50,28 @@ var ProfileForm = function () {
    * @param data
    */
   var submitForm = function (data) {
-    console.log('submitting data', data);
+    //console.log('submitting data', data);
     axios
       .post('/api/artists/update', data)
       .then(function (response) {
-        console.log('response', response);
+        //console.log('response', response);
         if (response.status === 200) {
           var result = response.data;
-          console.log('results are', result);
+          //console.log('results are', result);
           var user = result.data;
-          console.log('user', user);
+          //console.log('user', user);
           saveUser(user);
         } else {
-          console.log('error', error);
+          //console.log('error', error);
         }
       })
       .catch(function (error) {
-        console.log('error', error);
+        //console.log('error', error);
       });
   };
 
   const handleDrop = useCallback((data) => {
-    console.log('url', data);
+    //console.log('url', data);
     setValue('image', data.fileUrl);
   });
 

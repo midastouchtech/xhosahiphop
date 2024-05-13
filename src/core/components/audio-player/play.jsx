@@ -99,13 +99,13 @@ var PlayButton = function (_a) {
    */
   var handleClick = useEventCallback(function () {
     if (playlist) {
-      console.log('click play playlist', playlist);
+      //console.log('click play playlist', playlist);
       playAll(playlist);
     } else if (playerButton) {
       setPlayerStatus();
-      console.log('click play player');
+      //console.log('click play player');
     } else {
-      console.log('click play song', song);
+      //console.log('click play song', song);
       playPause(song);
     }
   });

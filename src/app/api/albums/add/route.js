@@ -35,19 +35,19 @@ const getPersonInfo = async (data, collectionName) => {
     const collection = db.collection(collectionName);
     const entityName = collectionName === 'users' ? 'artist' : 'genre';
     if (data) {
-      console.log(
+      //console.log(
         'looking for ids in data',
         data.map((i) => i.value)
       );
       const persons = await collection
         .find({ _id: { $in: data.map((i) => new ObjectId(i.value)) } })
         .toArray();
-      console.log('persons', persons);
+      //console.log('persons', persons);
       return persons.map((p) => getCleanEntity(p, entityName));
     }
     return [];
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return [];
   }
 };
@@ -77,13 +77,13 @@ const toKebabCase = (str) => {
 
 export async function POST(req) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query);
+    //console.log('req.method', req.method, 'req.query', req.query);
 
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('albums');
 
     const data = await req.json();
-    console.log('inserting data', data);
+    //console.log('inserting data', data);
     const songId = createSongId(data.name);
     const entity = {
       id: songId,
@@ -113,7 +113,7 @@ export async function POST(req) {
     };
 
     const result = await collection.insertOne(entity);
-    console.log(
+    //console.log(
       `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
     );
 
@@ -125,7 +125,7 @@ export async function POST(req) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return new Response({
       message: 'Something went wrong',
       error: e,

@@ -8,12 +8,12 @@ import { NextResponse } from 'next/server';
  */
 export async function POST(req) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query);
+    //console.log('req.method', req.method, 'req.query', req.query);
     const client = await clientPromise;
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('categories');
     const body = await req.json();
-    console.log('body', body);
+    //console.log('body', body);
     const { searchString } = body;
     // search for any artist that has the search string in their username
     const result = await collection
@@ -29,7 +29,7 @@ export async function POST(req) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return new Response({
       message: 'Something went wrong',
       error: e,

@@ -3,11 +3,11 @@ import { INVALIDATE, SUCCESSFUL } from '@/core/constants/codes';
 import { NextResponse } from 'next/server';
 export async function GET(req, { params: { slug } }) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query);
+    //console.log('req.method', req.method, 'req.query', req.query);
     const client = await clientPromise;
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('users');
-    console.log('slug', slug);
+    //console.log('slug', slug);
     // create an aggregate query to get the first 10 artists with their songs. we can identify their songs as songs where the current artist.username is contained in the artists array of the song where artist in this array are object with usernames as ids
     const result = await collection
       .aggregate([
@@ -56,7 +56,7 @@ export async function GET(req, { params: { slug } }) {
       ])
       .toArray();
 
-    console.log('result', result);
+    //console.log('result', result);
 
     return NextResponse.json(
       {
@@ -66,7 +66,7 @@ export async function GET(req, { params: { slug } }) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return new Response({
       message: 'Something went wrong',
       error: e,

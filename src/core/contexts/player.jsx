@@ -154,13 +154,6 @@ var Player = function (_a) {
   };
   // Retrieve song data compatible with the player.
   var getSongObject = function (song) {
-    console.log('new song obj', {
-      ...song,
-      name: song.title,
-      artist: getPersonName(song?.artists) || '',
-      url: song.src,
-      cover_art_url: song.cover,
-    });
     return __assign(__assign({}, song), {
       name: song.title,
       artist:
@@ -174,11 +167,11 @@ var Player = function (_a) {
   // Handle browser media click event
   var handleMediaClick = function (isPlay) {
     if (isPlay) {
-      console.log('playing song');
+      //console.log('playing song');
       play();
       navigator.mediaSession.playbackState = 'playing';
     } else {
-      console.log('pausing song');
+      //console.log('pausing song');
       pause();
       navigator.mediaSession.playbackState = 'paused';
     }
@@ -192,7 +185,7 @@ var Player = function (_a) {
   // Initialize player
   var initPlayer = function (isPlay) {
     addClass(playerRef.current, SHOW);
-    console.log('init player', SONGS);
+    //console.log('init player', SONGS);
     Amplitude.init({
       songs: SONGS,
       callbacks: {
@@ -319,7 +312,7 @@ var Player = function (_a) {
     setPlayerStatus();
   };
   var playPause = function (song) {
-    console.log('playing song', song);
+    //console.log('playing song', song);
     var songId = getCurrentSong().id;
     if (songId !== song.id) {
       var index = getSongIndex(song.id);

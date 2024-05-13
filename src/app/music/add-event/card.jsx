@@ -61,12 +61,12 @@ const EventCard = () => {
    * @param data
    */
   const submitForm = (data) => {
-    console.log('data', data);
-    console.log('formData', formData);
+    //console.log('data', data);
+    //console.log('formData', formData);
   };
 
   const logErrors = (errors) => {
-    console.log(errors);
+    //console.log(errors);
   };
 
   /**
@@ -75,12 +75,6 @@ const EventCard = () => {
    */
 
   const handleFormChange = (type) => (e) => {
-    console.log(
-      'handling form change for type',
-      type,
-      e.target.name,
-      e.target.value
-    );
     if (type === 'venues') {
       if (!isEmpty(e.target.name)) {
         setVenueFormData((prev) => ({
@@ -101,23 +95,23 @@ const EventCard = () => {
   };
 
   const handleFormSubmit = (type) => () => {
-    console.log('formData', formData);
+    //console.log('formData', formData);
     const data = type === 'venues' ? venueFormData : formData;
 
     axios
       .post(`/api/${type}/add`, assoc('userId', currentUser._id, data))
       .then((response) => {
-        console.log('response', response);
+        //console.log('response', response);
         router.push('/music');
       })
       .catch((error) => {
-        console.log('error', error);
+        //console.log('error', error);
         alert('Error adding music, please fill in all fields');
       });
   };
 
-  console.log('formData', formData);
-  console.log('venueFormData', venueFormData);
+  //console.log('formData', formData);
+  //console.log('venueFormData', venueFormData);
 
   return (
     <div className='card'>

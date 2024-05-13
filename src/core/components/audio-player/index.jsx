@@ -41,7 +41,7 @@ var AudioPlayer = React.forwardRef(function (props, ref) {
     },
     [songs]
   );
-  console.log('activeSong', activeSong);
+  //console.log('activeSong', activeSong);
   return (
     // Player [[ Find at scss/framework/player.scss ]]
     <div ref={ref} id='player' data-player={playerSkin} {...props}>

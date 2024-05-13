@@ -41,36 +41,36 @@ const getPersonInfo = async (data, collectionName) => {
     const collection = db.collection(collectionName);
     const entityName = collectionName === 'users' ? 'artist' : 'genre';
     if (data) {
-      console.log(
+      //console.log(
         'looking for ids in data',
         data.map((i) => i.value)
       );
       const persons = await collection
         .find({ _id: { $in: data.map((i) => new ObjectId(i.value)) } })
         .toArray();
-      console.log('persons', persons);
+      //console.log('persons', persons);
       return persons.map((p) => getCleanEntity(p, entityName));
     }
     return [];
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return [];
   }
 };
 
 const getAlbumInfo = async (data) => {
   try {
-    console.log('data', data);
+    //console.log('data', data);
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('albums');
     if (data) {
       const album = await collection.findOne({ _id: new ObjectId(data.value) });
-      console.log('album', album);
+      //console.log('album', album);
       return getCleanEntity(album, 'album');
     }
     return {};
   } catch (e) {
-    console.log(e);
+    //console.log(e);
   }
 };
 
@@ -93,12 +93,12 @@ const buildCloudinaryPreviewUrl = (src) => {
 
 export async function POST(req) {
   try {
-    console.log('req.method', req.method, 'req.query', req.query);
+    //console.log('req.method', req.method, 'req.query', req.query);
     const db = client.db(process.env.NEXT_PUBLIC_SELECTED_DB);
     const collection = db.collection('songs');
     const fileCollection = db.collection('files');
     const data = await req.json();
-    console.log('inserting data', data);
+    //console.log('inserting data', data);
     const songId = createSongId(data.title || data.name);
     const songEntity = {
       id: songId,
@@ -152,10 +152,10 @@ export async function POST(req) {
       ...data.cover,
     };
 
-    console.log(songEntity);
+    //console.log(songEntity);
 
     const result = await collection.insertOne(songEntity);
-    console.log(
+    //console.log(
       `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
     );
 
@@ -176,7 +176,7 @@ export async function POST(req) {
       { status: SUCCESSFUL }
     );
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     return new Response({
       message: 'Something went wrong',
       error: e,

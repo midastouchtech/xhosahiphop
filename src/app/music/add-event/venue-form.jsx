@@ -41,7 +41,7 @@ var VenueForm = function ({ onChange, data, onFormSubmit }) {
    */
   const handleDrop = (id) =>
     useCallback((url) => {
-      console.log(id, url);
+      //console.log(id, url);
       onChange({ target: { name: id, value: url } });
     }, []);
 
