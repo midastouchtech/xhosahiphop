@@ -99,9 +99,6 @@ export async function POST(req) {
     };
 
     const result = await collection.insertOne(entity);
-    //console.log(
-      `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
-    );
 
     return NextResponse.json(
       {
