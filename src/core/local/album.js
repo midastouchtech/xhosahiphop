@@ -8,29 +8,30 @@ import { getFloat, getInt, getPersonInfo, localDate } from '../utils';
  * @returns
  */
 export default function albumToLocal(data) {
-    var album = {};
-    album.id = data.id;
-    album.name = data.name;
-    album.type = data.type;
-    album.cover = data.albumCover;
-    album.favorites = getInt(data.favorites);
-    album.thumb = data.albumThumb;
+  var album = {};
+  album.id = data.id;
+  album.name = data.name;
+  album.type = data.type;
+  album.cover = data.cover;
+  album.favorites = getInt(data.favourites);
+  album.thumb = data.thumb;
+  album.rating = getFloat(data.rating);
+  album.company = data.company;
+  album.downloads = data.downloads;
+  album.date = localDate(data.release);
+  album.href = data.href;
+  album.songs = data.songList.map(function (item) {
+    return songToLocal(item);
+  });
+  album.artists = data.artists;
+  if (data.premium) {
+    album.premium = data.premium;
+  }
+  if (data.favorite) {
+    album.favorite = data.favorite;
+  }
+  if (data.albumRatings) {
     album.rating = getFloat(data.albumRatings);
-    album.company = data.albumCompany;
-    album.downloads = data.albumDownloads;
-    album.company = data.albumCompany;
-    album.date = localDate(data.release);
-    album.href = '/music/album/' + album.id;
-    album.songs = data.songList.map(function (item) { return songToLocal(item); });
-    album.artists = getPersonInfo(data.artists);
-    if (data.premium) {
-        album.premium = data.premium;
-    }
-    if (data.favorite) {
-        album.favorite = data.favorite;
-    }
-    if (data.albumRatings) {
-        album.rating = getFloat(data.albumRatings);
-    }
-    return album;
+  }
+  return album;
 }
