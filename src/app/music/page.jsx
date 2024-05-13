@@ -16,8 +16,10 @@ export default async function MusicPage() {
     getAlbums(),
     getArtists(),
     getEvents(),
-    getPlaylist(),
-    getRadio(),
+    // getPlaylist(),
+    [],
+    [],
+    // getRadio(),
     getSongs(),
   ]);
 
