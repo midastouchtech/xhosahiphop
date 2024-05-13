@@ -98,7 +98,7 @@ var Player = function (_a) {
     function () {
       if (status === 'ready') {
         toggleBodyClass();
-        var playerSongs = Amplitude.getSongs();
+        var playerSongs = Amplitude?.getSongs() || [];
         var player = playerRef.current;
         if (playerSongs.length) {
           if (pathname.startsWith('/auth')) {
