@@ -41,10 +41,6 @@ const getPersonInfo = async (data, collectionName) => {
     const collection = db.collection(collectionName);
     const entityName = collectionName === 'users' ? 'artist' : 'event-types';
     if (data) {
-      //console.log(
-        'looking for ids in data',
-        data.map((i) => i.value)
-      );
       const persons = await collection
         .find({ _id: { $in: data.map((i) => new ObjectId(i.value)) } })
         .toArray();
@@ -162,9 +158,6 @@ export async function POST(req) {
     //console.log(eventEntity);
 
     const result = await collection.insertOne(eventEntity);
-    //console.log(
-      `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
-    );
 
     fileCollection.insertOne(eventFileEntity);
     fileCollection.insertOne(coverFileEntity);

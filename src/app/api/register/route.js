@@ -30,9 +30,7 @@ export async function POST(req, {}) {
     };
 
     const result = await collection.insertOne(data);
-    //console.log(
-      `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
-    );
+
     return NextResponse.json(
       {
         message: 'User added successfully',
