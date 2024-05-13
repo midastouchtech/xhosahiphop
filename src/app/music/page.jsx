@@ -13,14 +13,18 @@ import {
 
 export default async function MusicPage() {
   const [albums, artists, events, playlist, radio, song] = await Promise.all([
-    getAlbums(),
-    getArtists(),
-    getEvents(),
+    //getAlbums(),
+    //getArtists(),
+    //getEvents(),
     // getPlaylist(),
     [],
     [],
+    [],
+    [],
+    [],
+    [],
     // getRadio(),
-    getSongs(),
+    //getSongs(),
   ]);
 
   return (
