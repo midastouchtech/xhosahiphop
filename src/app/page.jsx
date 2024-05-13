@@ -43,7 +43,7 @@ export default async function Home() {
           autoplay
         />
       </Artist>
-      <Blog />
+      {/* <Blog /> */}
       <MainFooter />
     </>
   );

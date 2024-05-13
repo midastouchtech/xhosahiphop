@@ -7,14 +7,14 @@
 // Modules
 import React from 'react';
 var Artist = function (_a) {
-    var children = _a.children;
-    return (
+  var children = _a.children;
+  return (
     // main section [[ Find at scss/framework/section.scss ]]
     <section className='main-section bg-light'>
       <div className='container'>
         <div className='col-xl-6 col-lg-8 mx-auto text-center fs-5 mb-5'>
           <h2>
-            Iimvumi Abanabe Ngokwaziwa
+            Iimvumi Ezisematheni
             <span className='text-primary'>Trending Artists</span>
           </h2>
           <p>
@@ -26,7 +26,8 @@ var Artist = function (_a) {
         </div>
         {children}
       </div>
-    </section>);
+    </section>
+  );
 };
 Artist.displayName = 'Artist';
 export default Artist;
