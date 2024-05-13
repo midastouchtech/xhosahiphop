@@ -141,7 +141,7 @@ export default function StationsPage() {
     return __generator(this, function (_a) {
       switch (_a.label) {
         case 0:
-          return [4 /*yield*/ getRadio()];
+          return [4 /*yield*/, getRadio()];
         case 1:
           radio = _a.sent();
           return [
