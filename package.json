@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-email/components": "^0.0.14",
     "@remixicon/react": "^4.0.1",
+    "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.2",
