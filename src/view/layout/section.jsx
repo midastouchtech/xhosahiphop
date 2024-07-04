@@ -18,31 +18,6 @@ import EventCard from '@/core/components/card/event';
 import AvatarCard from '@/core/components/card/avatar';
 import CollectionCard from '@/core/components/card/collection';
 
-// Utilities
-import { CardNameTypes } from '@/core/types';
-
-const propTypes = {
-  /**
-   * Set card component base on name
-   */
-  card: PropTypes.string.isRequired,
-
-  /**
-   * Set section link
-   */
-  href: PropTypes.string,
-
-  /**
-   * Set section subtitle
-   */
-  subtitle: PropTypes.string,
-
-  /**
-   * Set section title
-   */
-  title: PropTypes.string.isRequired,
-};
-
 const Section = ({
   card,
   data,
@@ -75,19 +50,18 @@ const Section = ({
   };
 
   const handleAfterInit = (swiper) => {
-    const slide = swiper?.slides[0];
-    const { height } = slide?.getBoundingClientRect() || {};
-    const foot = slide?.querySelector('.cover__foot');
+    console.log('swiper', swiper);
+    const slide = swiper.slides[0];
+    if (swiper.slides.length > 0) {
+      const { height } = slide.getBoundingClientRect();
+      const foot = slide.querySelector('.cover__foot');
 
-    if (foot) {
-      const footHeight = foot?.getBoundingClientRect().height || 0;
-      const percentage = Math.round(((height - footHeight) / height) * 100);
-      const { parentElement } = swiper.el;
-      if (parentElement) {
-        parentElement?.style?.setProperty(
-          '--swiper-carousel-navigation-top',
-          percentage / 2 + '%'
-        );
+      if (foot) {
+        const footHeight = foot.getBoundingClientRect().height || 0;
+        const percentage = Math.round(((height - footHeight) / height) * 100);
+        const { parentElement } = swiper.el;
+
+        parentElement.style.setProperty('--cover-foot', `${percentage}%`);
       }
     }
   };
@@ -116,7 +90,7 @@ const Section = ({
       queue: card === 'radio' || card === 'track',
     };
   }
-
+  console.log('data', data);
   return (
     // Section [[ Find at scss/framework/section.scss ]]
     <section className='section'>
@@ -133,7 +107,6 @@ const Section = ({
   );
 };
 
-Section.propTypes = propTypes;
 Section.displayName = 'Section';
 
 export default Section;

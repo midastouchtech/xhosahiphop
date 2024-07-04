@@ -80,6 +80,16 @@ export async function getAlbums() {
   return data;
 }
 
+export async function getTopCharts() {
+  //console.log('getAlbums =>', ALBUMS);
+  const response = await base(ALBUMS);
+  //console.log('getAlbums response =>', response);
+  const data = response.map((item) => {
+    return albumToLocal(item);
+  });
+  return data;
+}
+
 /**
  * Get artists data from json file
  * @returns
